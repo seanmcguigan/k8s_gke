@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: tea-rc
+spec:
+  replicas: 5
+  template:
+    metadata:
+      labels:
+        app: tea
+    spec:
+      containers:
+      - name: tea
+        image: nginxdemos/hello
+        ports: # the container listens on 80 - the nodePort is assigned dynamically
+        - containerPort: 80
